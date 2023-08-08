@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalize Name</title>
+    <style>
+        #blankcontaner {
+            font-size: 30px;
+            color: rgb(71, 7, 234);
+            margin-top: 30px;
+
+        }
+        body {
+            background-color: rgb(22, 62, 63);
+        }
+
+        h1 {
+            color: rgb(216, 159, 36);
+        }
+        label {
+            color: rgb(10, 226, 10);
+        }
+        button {
+            border-radius: 10px;
+            margin: 20px;
+            background-color: rgb(8, 75, 131);
+            color: #0eb01e;
+            height: 38px;
+            width: 158px;
+            border: rgb(0, 255, 51);
+        }
+    </style>
+</head>
+<body>
+    <div class="shadow">
+        <!-- <h1>Capitalize First Letter</h1> -->
+        <form class="Capitalize">
+            <h1>Enter Your Name</h1>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+            <button type="button" onclick="capitalizeName()">Capitalize First Letter</button>
+        </form>
+    </div>
+    <div id="blankcontaner"></div>
+   
+   
+
+   
+</body>
+<script>
+    function capitalizeName() {
+const nameInput = document.getElementById('name').value.trim();
+
+const capitalizedName = nameInput.charAt(0).toLowerCase() === nameInput.charAt(0) ? nameInput.charAt(0).toUpperCase() + nameInput.slice(1) :nameInput;
+
+// console.log("Capitalized Name:", capitalizedName);
+// document.getElementById('blankcontaner').innerHTML = `Your Name is ${capitalizedName}`;
+const result = document.querySelector('#blankcontaner')
+result.innerHTML = `Your Name is ${capitalizedName}`;
+}
+
+</script>
+</html>
