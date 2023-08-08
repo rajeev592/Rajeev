@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            /* height: 100vh;
+            width: 100vh; */
+            
+            /* align-items: center;
+            justify-content: space-between; */
+            background-color: rgb(162, 77, 77);
+        }
+        h1 {
+            color: aqua;
+        }
+        img {
+            height: 230px;
+             width: 300px;
+            margin: 20px; 
+            
+        }
+        .box1 {
+            display:flex;
+            
+            justify-content: space-around;
+            background-color: rgb(57, 14, 97);
+            
+        }
+        .box2 {
+            display:flex;
+            justify-content: space-around;
+            background-color: rgb(49, 72, 25);
+        }
+        .box3 {
+            display:flex;
+            justify-content: space-around;
+            background-color: rgb(67, 28, 67);
+        }
+       
+        .books {
+            display: flex;
+            border-radius: 25px;
+            height: 20px;
+            width: 80px;
+             margin-left:120px;
+             margin-bottom: 15px;
+             background-color: aqua;
+             color: blue;
+        }
+        .imag-box {
+            align-items: center;
+            justify-content: center;
+        }
+        #blankcontainer {
+           display: flex;
+           justify-content: space-around;
+           background-color: goldenrod; 
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>SHOP NOW OUR BEST CODING BOOKS</h1>
+    <div class="imag-box">
+
+        <div class="box1">
+            <div class="img0">
+                <img src="./assets/pexels-thought-catalog-904620.jpg" alt="" class="pht0">
+                
+                <button class="books">Add to cart</button>
+            </div>
+            <div class="img1">
+                <img src="./assets/pexels-pixabay-256450.jpg" alt="" class="pht1">
+                
+                <button class="books">Add to cart</button>
+            </div>
+            <div class="img2">
+                <img src="./assets/pexels-perfecto-capucine-1253522.jpg" alt="" class="pht2">
+                
+                <button class="books">Add to cart</button>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="img0">
+                <img src="./assets/pexels-parth-shah-824197.jpg" alt="" class="pht3">
+                <button class="books">Add to cart</button>
+            </div>
+            <div class="img1">
+                <img src="./assets/pexels-cottonbro-studio-4554234.jpg" alt="" class="pht4">
+                <button class="books">Add to cart</button>
+            </div>
+            <div class="img2">
+                <img src="./assets/pexels-christina-morillo-1181298.jpg" alt="" class="pht5">
+                <button class="books">Add to cart</button>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="img0">
+                <img src="./assets/pexels-perfecto-capucine-1253522.jpg" alt="" class="pht6">
+                <button class="books">Add to cart</button>
+            </div>
+            <div class="img1">
+                <img src="./assets/pexels-cottonbro-studio-4554234.jpg" alt="" class="pht7">
+                <button class="books">Add to cart</button>
+            </div>
+            <div class="img2">
+                <img src="./assets/pexels-thought-catalog-904620.jpg" alt="" class="pht8">
+                <button class="books">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    <div id="blankcontainer"></div>
+</body>
+<script>
+    const addToCartbuttons = document.querySelectorAll('.books');
+    var emptybox = document.getElementById('blankcontainer');
+    const selectedImages = [];
+    
+    addToCartbuttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const productItem = button.parentElement;
+            const productImage = productItem.querySelector('img');
+             
+            if (selectedImages.some((img) => img.src === productImage.src)) {
+                alert(`you have already selected this product!`);
+                return;
+            }
+
+            const clonedImage = productImage.cloneNode();
+            emptybox.appendChild(clonedImage);
+            selectedImages.push(clonedImage);
+        });
+    });
+</script>
+</html>
