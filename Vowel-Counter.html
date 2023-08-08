@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter</title>
+</head>
+<body>
+    <h1>Vowel Counter</h1>
+    <form id="nameForm">
+        <label for="name">Enter a name:</label>
+        <input type="text" id="name" required>
+        <button type="submit">Count Vowels</button>
+    </form>
+    <p id="result"></p>
+
+    
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const nameForm = document.getElementById('nameForm');
+    const resultElement = document.getElementById('result');
+
+    nameForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById('name');
+        const name = nameInput.value;
+        const numVowels = countVowels(name);
+
+        resultElement.textContent = `The name '${name}' has ${numVowels} vowels.`;
+    });
+
+    function countVowels(name) {
+        const vowels = ['a', 'e', 'i', 'o', 'u'];
+        let vowelCount = 0;
+
+        for (let i = 0; i < name.length; i++) {
+            const lowercaseChar = name[i].toLowerCase();
+            if (vowels.includes(lowercaseChar)) {
+                vowelCount++;
+            }
+        }
+
+        return vowelCount;
+    }
+});
+
+</script>
+
+</html>
