@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverted Right Angle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin-top: 50px;
+            display: flex;
+            align-items: center; 
+            flex-direction: column;
+            background-color: rgb(66, 114, 98);
+            gap: 30px;
+        }
+        h1 {
+            color: blue;
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+        main > label {
+            color: rgb(29, 29, 73);
+            font-size: 35px;
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            height: 40px;
+            width: 250px;
+        }
+        input:focus {
+            transform: scale(2);
+            outline: none;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 30px;
+            display: flex;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: rgb(28, 28, 26);
+            background-color: cyan;
+        }
+        button:hover {
+            background-color: rgb(28, 190, 46);
+            box-shadow: 0 0 20px wheat;
+        }
+        #blanckContainer {
+            font-size: 80px;
+            margin: 50px;
+            align-items: center;
+            margin-left: 300px;
+            border: 5px solid rgb(24, 177, 26);
+            padding: 10px 20px;
+            color: darkgoldenrod;
+            
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Creat inverted Right Angle Triangle using Astrisk</h1>
+        </header>
+        <label for="number">Enter Number of Rows, that you want to print with an Astrisk Pattern!: </label>
+        <input type="number" id="input-fild" placeholder="enter row no.">
+        <button id="button">Print Pattern</button>
+        <button onclick="location.reload()">Refresh</button>
+
+        <div id="blanckContainer">Here is the Pattern</div>
+    </main>
+</body>
+<script>
+    const userInput = document.getElementById('input-fild');
+    const buttonClick = document.getElementById('button');
+    const astriskSpace = document.getElementById('blanckContainer');
+
+    let storeInput;
+
+    // define an Arr of colors
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+    // applying input event on userInput
+    userInput.addEventListener('input', (e) => {
+        storeInput = Number(e.target.value);
+    });
+
+    // applying event on Button
+    buttonClick.addEventListener('click', () => {
+        astriskSpace.innerHTML = "";
+
+        // code for astrisk pattern;
+        for(let row = storeInput; row >=1; row--) {
+
+            let color = colors[row % colors.length];
+
+            for(let col=1; col <= row; col++) {
+                astriskSpace.innerHTML += `<span style="color:${color};">*</span>`;
+
+                // astriskSpace.innerHTML += "*";
+            };
+            astriskSpace.innerHTML += `<br>`
+        }
+    })
+
+</script>
+</html>
