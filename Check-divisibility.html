@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check for Divisibility</title>
+
+    <style>
+        * {
+            margin: 20px 10px;
+            padding: 0;
+            align-items: center;
+        }
+        body {
+            height: 100vh;
+            background-color: rgb(42, 24, 24);
+        }
+        h1 {
+             color: rgb(33, 216, 216);
+        }
+        p {
+            font-size: 25px;
+            color: rgb(51, 226, 12);
+        }
+
+        label {
+            display: block;
+            color: blue;
+            font-size: 22px;
+        }
+        button {
+            display: block;
+            width: 180px;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            background-color: rgb(92, 177, 7);
+            color: blue;
+            font-size: 30px;
+            border-radius: 15px;
+
+        }
+        input {
+            width: 150px;
+            height: 40px;
+            font-size: 22px;
+             box-sizing: border-box;
+            border: 5px solid greenyellow;
+            border-radius: 5px;
+            
+        }
+        #blanckcontainer {
+            font-size: 40px;
+            color: darkviolet;
+            margin-top: 50px;
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Check for Divisibility in the following condition</h1>
+        <p>Given Number should be divisibel by 3, but not! by 2</p>
+    </header>
+    <form>
+        <label for="Number">Enter Number separated br comma(,) you want to chek</label>
+        <input type="text" id="inputFild" placeholder="enter number">
+        <button type="button" onclick="checkDivisibility()">Chek</button>
+    </form>
+    <div id="blanckcontainer"></div>
+</body>
+<script>
+    const number = document.getElementById('inputFild');
+    const blankContainer = document.getElementById('blanckcontainer');
+
+    function checkDivisibility() {
+        const numberArr = number.value.split(",");
+        const divisibelNumber = [];
+
+        for (let i = 0; i< numberArr.length; i++) {
+            const currentNumber = parseInt(numberArr[i]);
+            
+            if (isNaN(currentNumber)) {
+                alert("sorry, you are enter a worng input, plese try agin")
+            }
+            if (currentNumber % 2 === 0) {
+                continue;
+            }
+            if (currentNumber % 3 === 0) {
+                divisibelNumber.push(currentNumber);
+            }
+            
+        }
+        if (divisibelNumber.length > 0) {
+            blankContainer.innerHTML = `Numbers that Satisfy the Condition: ${divisibelNumber}`;
+        } else {
+            blankContainer.innerHTML = "Number that Not Satisfy the Condition";
+        }
+    }
+</script>
+</html>
