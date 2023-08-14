@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill splitter</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            padding: 1%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            background-color: black;
+        }
+        h1{
+
+            color: green;
+            text-transform: capitalize;
+        }
+        main {
+            color: white;
+        }
+        #inpit-screen{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+            
+        }
+        #inpit-screen-1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #inpit-screen-1>span>label{
+            color: aqua;
+            font-size: 35px;
+        }
+        #inpit-screen-1 > span > input{
+            padding: 4px 18px;
+            width: 110px;
+            font-size: 30px;
+            text-align: center;
+            border: 2px solid rgb(8, 198, 23);
+            color: rgb(152, 21, 119);
+            background-color: transparent;
+        }
+        button {
+            font-size: 25px;
+            pad: 4px;
+            border-radius: 8px;
+            background-color: transparent;
+            color: wheat;
+            border: 2px solid rgb(16, 210, 74);
+            box-shadow: 0 0 10px rgb(21, 175, 21);
+            cursor: pointer;
+            margin: 20px;
+        }
+        #inpit-screen-2{
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        h2{
+            color: aqua;
+            border-bottom: 2px solid rgb(187, 23, 202);
+        }
+        #input-2-body{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            column-gap: 20px;
+            row-gap: 10px;
+        }
+        .dish > label{
+            color: aqua;
+            font-size: 20px;
+        }
+        .dish > input{
+            padding: 6px 12px;
+            width: 100px;
+            background-color: transparent;
+            font-size: 25px;
+            text-align: center;
+            color: purple;
+            border: 2px solid rgb(18, 160, 196);
+        }
+        #input-screen-3{
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #input-screen-3 > span > label{
+            color: aqua;
+            font-size: 22px;
+        }
+        #input-screen-3 > span > input{
+            padding: 4px 20px;
+            width: 100px;
+            background-color: transparent;
+            font-size: 25px;
+            text-align: center;
+            color: purple;
+            border: 2px solid rgb(18, 160, 196);
+        }
+        /* removing outline  when input tag becom focused */
+        input:focus{
+            outline: none;
+        }
+        #output-screen {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #output-screen > p{
+            color: aqua;
+            font-size: 22px;
+        }
+        #output-screen > p > span{
+            border-bottom: 2px solid rgb(243, 60, 243);
+            color: purple;
+        }
+        input[type=number]::-webkit-file-upload-button,
+        input[type=number]::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0px;
+        }
+        label{
+            color: aqua;
+            font-size: 35px;
+        }
+        #dishesOnTable{
+            padding: 4px 18px;
+            width: 110px;
+            font-size: 30px;
+            text-align: center;
+            border: 2px solid rgb(8, 198, 23);
+            color: rgb(152, 21, 119);
+            background-color: transparent;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restaurant Bill Splitter</h1>
+    </header>
+    <main>
+        <!-- input select of the restaurent bill -->
+         <div id="input-screen">
+            <div id="input-screen-1">
+                <span>
+                    <label for="dishesOnTable">Enter number of Dishes by Coustomare on table</label>
+                    <input type="number" id="dishesOnTable">
+                </span>
+                <button id="dishButton" type="button">Create Dish</button>
+            </div>
+
+            <!--********************second input*****************************  -->
+            <div id="input-screen-2">
+                <header>
+                    <h2>Enter different-different Dish Price</h2>
+                </header>
+                <div id="input-2-body">
+                    <!-- adding div label and input tag form javascript -->
+                </div>
+                <footer id="input-2-footer">
+                    <button type="button" id="input-2-button">Submit</button>
+                </footer>
+            </div>
+            <!--****************threed input*******************************************************  -->
+            <div id="input-screen-3">
+                <span>
+                    <label for="person">Enter total no. of pople sharing dishes</label>
+                    <input type="number" id="persons" class="persons">
+                </span>
+                <button type="button" id="person-btn">Calculate Bill</button>
+            </div>
+         </div>
+         <!-- output section of the  -->
+         <div id="output-screen">
+            <p id="Total-Bill">
+                <!-- adding total bill form javascript -->
+            </p>
+
+            <p id="Bill-per-person">
+                <!-- adding total bill form javascript -->
+            </p>
+         </div>
+
+    </main>
+</body>
+
+<script>
+    let dishesOnTable;
+    let persons;
+    let previousDish;
+    let dishArray = [];
+    let dishpricearray = [];
+    const rupeeSymbol = '\u20B9';
+
+// input event for input screen 1
+document.querySelector('#dishesOnTable').addEventListener('input', (e) => {
+    dishesOnTable = e.target.value;
+})
+
+// click event for screen 1 submit button
+document.querySelector('#dishButton').addEventListener('click', () => {
+    // removing innerHTML of total bill and each person forn output screen
+    document.querySelector('#Total-Bill').innerHTML = '';
+    document.querySelector('#Bill-per-person').innerHTML = '';
+
+    document.querySelector('#persons').value = null;
+    persons = null;
+
+    // checking input price field of dishes filled or not
+
+    if(dishesOnTable === undefined) {
+        alert("plese enter number of dishes orderd by customare");
+        return undefined;
+    }
+
+    // removing prvious div tag if person which prevent any unexpected error
+    if(previousDish) {
+        for(let i=0; previousDish > i; i++) {
+            dishArray[i].remove();
+        }
+    }
+    // enable input screen 2 before display none
+    document.querySelector('#input-screen-2').style.display = "flex";
+    for(let i=0; dishesOnTable > i; i++) {
+        // creating duv tag for each dish price with lable and input tag
+
+        dishArray[i] = document.createElement('div');
+        dishArray[i].idName = `dish-${i}`;
+        dishArray[i].classList.add("dish");
+
+        document.querySelector('#input-2-body').appendChild(dishArray[i]);
+
+        // creating label for dishes in input screen 2
+        dishArray[i].label = document.createElement("label");
+        dishArray[i].label.setAttribute("for",`price-dish-${i+i}`);
+        dishArray[i].label.textContent = `Dish-${i+i} : `;
+        dishArray[i].appendChild(dishArray[i].label);
+
+        // creating input field for dishes in input screen 2
+        dishArray[i].input = document.createElement("input");
+        dishArray[i].input.setAttribute("type", "number");
+        dishArray[i].input.idName = `price-Dish-${i+i}`;
+        dishArray[i].appendChild(dishArray[i].input);
+
+        // adding input event on dynamically create input tag
+        dishArray[i].input.addEventListener("input", (e) => {
+            dishpricearray[i] = e.target.value;
+        })
+        
+       
+
+
+    }
+     // previous dishes copied in another variable for future use of removing the div tag
+
+     previousDish = dishesOnTable;
+
+})
+// click event for create dish button in screen 2
+document.querySelector('#input-2-button').addEventListener('click', () => {
+    // checking input field of all dishes price are filled or not
+    for(let i=0; dishesOnTable > i; i++) {
+        if((dishpricearray[i] == undefined) || (dishpricearray[i] == "")) {
+            alert(`plese fill all input box of "Enter differenr-different dishes price"`);
+            return undefined;
+        }
+    }
+    // enable input screen 3, before displaying none
+    document.querySelector('#input-screen-3').style.display = "flex";
+})
+// input event for people in input screen 3
+document.querySelector('#persons').addEventListener('input', (e) => {
+    persons = e.target.value;
+})
+
+document.querySelector('#person-btn').addEventListener('click', () => {
+    if(persons == undefined) {
+        alert(`plese fill in the input field of "Enter total no. of people sharing dishes"`);
+        return undefined;
+    }
+    // calculating total price of the dishes from disharray
+    let TotalBill = dishpricearray.reduce((ac, currentVal)=> {
+        return (Number(ac) + Number(currentVal));
+    })
+    // adding innerHTML to total bill
+    document.querySelector('#Total-Bill').innerHTML = `Total bill : <span>${(TotalBill).toFixed(2)} ${rupeeSymbol}</span>`;
+
+    document.querySelector('#Bill-per-person').innerHTML = `Bill to be paid by each person in group : <span>${(TotalBill/Number(persons)).toFixed(2)} ${rupeeSymbol}</span>`;
+});
+
+</script>
+</html>
