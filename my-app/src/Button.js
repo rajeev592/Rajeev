@@ -1,6 +1,6 @@
 function Button(props) {
     return (
-      <button style={{backgroundColor:"green",color:"white"}} onClick={props.onClick}>
+      <button style={{backgroundColor:"green",color:"whit"}} onClick={props.onClick}>
         {props.text}
       </button>
     );

@@ -2,46 +2,6 @@
 <html>
 <head>
     <title>Order Price Calculator</title>
-    <style>
-        body {
-            height: 100vh;
-            background-color: black;
-            color: white;
-            text-align: center;
-        }
-       label {
-        margin: 5px;
-        font-size: 25px;
-        color: tomato;
-        
-       }
-       input {
-        margin-top: 30px;
-        height: 20px;
-        
-       }
-       button{
-        margin: 40px;
-        border-radius: 10px;
-        height: 30px;
-        width: 150px;
-        color: rgb(178, 210, 17);
-        background-color: rgb(3, 141, 141);
-        font-size: 22px;
-        border: 3px solid red;
-       }
-       button:hover{
-        background-color: green;
-       }
-       #result {
-        font-size: 25px;
-        color: blue;
-       }
-       span{
-        color: darkmagenta;
-        font-size: 25px;
-       }
-    </style>
 </head>
 <body>
     <form id="orderForm">
@@ -53,7 +13,7 @@
         <br>
         <button type="button" id="calculateButton">Calculate</button>
     </form>
-    <p id="result"><span>Final Order Price:</span> </p>
+    <p id="result">Final Order Price: </p>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
