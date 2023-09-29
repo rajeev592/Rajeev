@@ -1,7 +1,7 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
 
-export const ImageCard=({imageUrl,id})=>{
+import { useNavigate } from "react-router-dom"
+ 
+export const ImageCard=(imageUrl,id)=>{
     const navigate=useNavigate()
     
     const redirectToPage = () => {

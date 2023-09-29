@@ -1,10 +1,14 @@
 
 import './App.css'
+
 import CustomRoute from './routes/CustomRoute'
 
 
 function App() {
-  <CustomRoute />
+  
+   <CustomRoute />
+  
+  
 }
 
 export default App

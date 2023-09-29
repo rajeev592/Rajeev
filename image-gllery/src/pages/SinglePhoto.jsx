@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const SinglePhoto = () => {
 const [data,setData] = useState([]);
 const {id} = useParams()
-const getData = async()=>{
+const getData = async () => {
     const resp = await fetch(`https://api.slingacademy.com/v1/sample-data/photos/${id}`);
     const {photo} = await resp.json();
     setData(photo)
