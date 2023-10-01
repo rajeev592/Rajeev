@@ -1,0 +1,31 @@
+.pokemon-Detials-name {
+ font-size: xx-large;
+ color: black;
+ margin-top: 2rem;
+ 
+}
+.pokemon-Detials-image {
+  max-height: 200px;
+  margin-top: 2rem;
+}
+.pokemon-Detials-types {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  font-size: large;
+}
+.pokemon-Detials-types div {
+    border: 1px solid rgb(14, 26, 193);
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: gainsboro;
+}
+.pokemon-Detials-name > span {
+    letter-spacing: 1rem;
+    color: rgb(116, 15, 198);
+}
+.pokemon-Detials-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
