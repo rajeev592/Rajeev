@@ -5,7 +5,7 @@ import { ImageCard } from "../component/ImageCard";
 export const HomePage = () => {
 const [data,setData] = useState([]);
 const getData = async () => {
-    const resp = await fetch("https://api.slingacademy.com/v1/sample-data/photos?offset=5&limit=20");
+    const resp = await fetch("https://api.slingacademy.com/v1/sample-data/photos?limit=20");
     const {photos} = await resp.json();
     setData(photos)
     console.log(photos);
